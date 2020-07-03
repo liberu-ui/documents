@@ -24,7 +24,7 @@
   "dependencies": {
     "@enso-ui/card": "^2.0",
     "@enso-ui/confirmation": "^1.0",
-    "@enso-ui/files": "^2.3",
+    "@enso-ui/files": "^2.0",
     "@enso-ui/mixins": "^2.0",
     "@enso-ui/transitions": "^1.0",
     "@enso-ui/ui": "^3.0",
