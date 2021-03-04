@@ -19,7 +19,9 @@
                 ref="documents"
                 :type="type"
                 :query="query"
-                @update="count = $refs.documents.count; $refs.card.resize()"/>
+                @update="count = $refs.documents.count; $refs.card.resize()"
+                v-bind="$attrs"
+                v-on="$listeners"/>
         </card-content>
     </card>
 </template>

@@ -14,6 +14,7 @@
                         :compact="compact"
                         :params="params"
                         :url="uploadLink"
+                        :file-size-limit="fileSizeLimit"
                         multiple
                         v-if="!disableUpload && uploadLink"
                         @upload-successful="fetch();"/>
@@ -99,6 +100,10 @@ export default {
         disableUpload: {
             type: Boolean,
             default: false,
+        },
+        fileSizeLimit: {
+            default: 20 * 1024 * 1024,
+            type: Number,
         },
     },
 
