@@ -1,9 +1,9 @@
 <template>
-    <div class="box document has-padding-small raises-on-hover">
+    <div class="box document p-1 raises-on-hover">
         <div class="level">
             <div class="level-left">
                 <div class="level-item">
-                    <span class="icon is-small has-margin-small"
+                    <span class="icon is-small m-1"
                         v-tooltip="file.name">
                         <fa :icon="icon"/>
                     </span>
@@ -13,7 +13,7 @@
             <div class="level-right">
                 <fade>
                     <div class="level-item">
-                        <a class="is-naked has-margin-left-medium"
+                        <a class="is-naked ml-2"
                             v-if="file.isShareable && canAccess('core.files.link')"
                             @click="link">
                             <span class="icon is-small">
@@ -21,7 +21,7 @@
                                     size="sm"/>
                             </span>
                         </a>
-                        <a class="is-naked has-margin-left-medium"
+                        <a class="is-naked ml-2"
                             @click="show"
                             v-if="file.isViewable && canAccess('core.files.show')">
                             <span class="icon is-small">
@@ -29,7 +29,7 @@
                                     size="sm"/>
                             </span>
                         </a>
-                        <a class="is-naked has-margin-left-medium"
+                        <a class="is-naked ml-2"
                             :href="downloadLink"
                             v-if="file.isViewable && canAccess('core.files.download')">
                             <span class="icon is-small">
@@ -39,7 +39,7 @@
                         </a>
                         <confirmation @confirm="$emit('delete')"
                             v-if="file.isDestroyable && canAccess('core.documents.destroy')">
-                            <a class="is-naked has-margin-left-medium">
+                            <a class="is-naked ml-2">
                                 <span class="icon is-small">
                                     <fa icon="trash-alt"
                                         size="sm"/>
@@ -48,7 +48,7 @@
                         </confirmation>
                         <v-popover trigger="hover"
                             placement="top">
-                            <span class="icon is-small is-naked has-margin-left-medium">
+                            <span class="icon is-small is-naked ml-2">
                                 <fa icon="info-circle"
                                     size="sm"/>
                             </span>

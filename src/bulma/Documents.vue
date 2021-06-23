@@ -46,7 +46,7 @@
                 </p>
             </div>
         </slot>
-        <div class="has-margin-top-large"
+        <div class="mt-3"
             :class="{'columns is-mobile is-multiline': !compact}">
             <div v-for="(doc, index) in documents"
                 :key="doc.id"
