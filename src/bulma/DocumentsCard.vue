@@ -15,13 +15,13 @@
             </template>
         </card-header>
         <card-content class="is-paddingless">
-            <documents :id="id"
-                ref="documents"
+            <documents v-bind="$attrs"
+                :id="id"
                 :type="type"
                 :query="query"
                 @update="count = $refs.documents.count; $refs.card.resize()"
-                v-bind="$attrs"
-                v-on="$listeners"/>
+                v-on="$listeners"
+                ref="documents"/>
         </card-content>
     </card>
 </template>

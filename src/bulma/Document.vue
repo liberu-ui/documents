@@ -70,7 +70,7 @@
                                         <span class="icon is-small">
                                             <fa icon="database"/>
                                         </span>
-                                        {{ $options.filters.numberFormat(file.size) }} Kb
+                                        {{ size }} Kb
                                     </p>
                                 </div>
                             </template>
@@ -96,7 +96,7 @@ import Confirmation from '@enso-ui/confirmation/bulma';
 import formatDistance from '@enso-ui/ui/src/modules/plugins/date-fns/formatDistance';
 import Url from '@enso-ui/files/src/bulma/pages/files/components/Url.vue';
 import { Fade } from '@enso-ui/transitions';
-import { files } from '@enso-ui/mixins';
+import { files, numberFormat } from '@enso-ui/mixins';
 
 library.add(
     faEye, faCloudDownloadAlt, faTrashAlt, faLink,
@@ -133,6 +133,9 @@ export default {
         },
         openLink() {
             return this.route('core.files.show', this.file.id);
+        },
+        size() {
+            return numberFormat(this.file.size);
         },
     },
 
