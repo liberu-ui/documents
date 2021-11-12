@@ -46,13 +46,13 @@
                                 </span>
                             </a>
                         </confirmation>
-                        <v-popover trigger="hover"
+                        <dropdown trigger="hover"
                             placement="top">
                             <span class="icon is-small is-naked ml-2">
                                 <fa icon="info-circle"
                                     size="sm"/>
                             </span>
-                            <template v-slot:popover>
+                            <template #:popper>
                                 <div class="info">
                                     <p>
                                         <span class="icon is-small">
@@ -74,7 +74,7 @@
                                     </p>
                                 </div>
                             </template>
-                        </v-popover>
+                        </dropdown>
                     </div>
                 </fade>
                 <url :show="temporaryLink !== ''"
@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import { VTooltip, VPopover } from 'v-tooltip';
+import { VTooltip, Dropdown } from 'v-tooltip';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faEye, faCloudDownloadAlt, faTrashAlt, faLink,
@@ -109,7 +109,7 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: {
-        VPopover, Confirmation, Url, Fade,
+        Dropdown, Confirmation, Url, Fade,
     },
 
     mixins: [files],
