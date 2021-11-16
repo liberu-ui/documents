@@ -52,7 +52,7 @@
                                 <fa icon="info-circle"
                                     size="sm"/>
                             </span>
-                            <template #:popper>
+                            <template #popper>
                                 <div class="info">
                                     <p>
                                         <span class="icon is-small">
