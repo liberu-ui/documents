@@ -27,6 +27,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCopy, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -40,7 +41,14 @@ export default {
     name: 'DocumentsCard',
 
     components: {
-        Card, CardHeader, CardRefresh, CardCollapse, CardBadge, CardContent, Documents,
+        Fa,
+        Card,
+        CardHeader,
+        CardRefresh,
+        CardCollapse,
+        CardBadge,
+        CardContent,
+        Documents,
     },
 
     inject: ['i18n', 'route'],

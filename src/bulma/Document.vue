@@ -87,6 +87,7 @@
 
 <script>
 import { VTooltip, Dropdown } from 'v-tooltip';
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faEye, faCloudDownloadAlt, faTrashAlt, faLink,
@@ -109,7 +110,7 @@ export default {
     directives: { tooltip: VTooltip },
 
     components: {
-        Dropdown, Confirmation, Url, Fade,
+        Fa, Dropdown, Confirmation, Url, Fade,
     },
 
     mixins: [files],

@@ -60,6 +60,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { EnsoUploader } from '@enso-ui/uploader/bulma';
@@ -72,7 +73,9 @@ library.add(faPlus, faSync, faSearch);
 export default {
     name: 'Documents',
 
-    components: { Document, File, EnsoUploader },
+    components: {
+        Fa, Document, File, EnsoUploader,
+    },
 
     inject: ['errorHandler', 'i18n', 'route', 'canAccess'],
 
