@@ -86,7 +86,7 @@
 </template>
 
 <script>
-import { VTooltip, Dropdown } from 'v-tooltip';
+import { Dropdown } from 'v-tooltip';
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -106,8 +106,6 @@ library.add(
 
 export default {
     name: 'Document',
-
-    directives: { tooltip: VTooltip },
 
     components: {
         Fa, Dropdown, Confirmation, Url, Fade,
