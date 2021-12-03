@@ -122,6 +122,8 @@ export default {
         },
     },
 
+    emits: ['delete'],
+
     data: () => ({
         temporaryLink: '',
     }),

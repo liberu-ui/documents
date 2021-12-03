@@ -110,6 +110,8 @@ export default {
         },
     },
 
+    emits: ['update'],
+
     data: () => ({
         documents: [],
         loading: false,
