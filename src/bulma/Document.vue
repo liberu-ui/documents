@@ -46,7 +46,7 @@
                                 </span>
                             </a>
                         </confirmation>
-                        <dropdown trigger="hover"
+                        <dropdown :triggers="['hover']"
                             placement="top">
                             <span class="icon is-small is-naked ml-2">
                                 <fa icon="info-circle"
@@ -97,7 +97,7 @@ import Confirmation from '@enso-ui/confirmation/bulma';
 import formatDistance from '@enso-ui/ui/src/modules/plugins/date-fns/formatDistance';
 import Url from '@enso-ui/files/src/bulma/pages/files/components/Url.vue';
 import { Fade } from '@enso-ui/transitions';
-import { files, numberFormat } from '@enso-ui/mixins';
+import { EnsoFile, numberFormat } from '@enso-ui/mixins';
 
 library.add(
     faEye, faCloudDownloadAlt, faTrashAlt, faLink,
@@ -111,9 +111,7 @@ export default {
         Fa, Dropdown, Confirmation, Url, Fade,
     },
 
-    mixins: [files],
-
-    inject: ['canAccess', 'errorHandler', 'route'],
+    inject: ['canAccess', 'errorHandler', 'http', 'route'],
 
     props: {
         file: {
@@ -129,6 +127,11 @@ export default {
     }),
 
     computed: {
+        icon() {
+            const file = new EnsoFile(this.file.name);
+
+            return file.icon();
+        },
         downloadLink() {
             return this.route('core.files.download', this.file.id);
         },
@@ -142,7 +145,7 @@ export default {
 
     methods: {
         link() {
-            axios.get(this.route('core.files.link', this.file.id))
+            this.http.get(this.route('core.files.link', this.file.id))
                 .then(({ data }) => (this.temporaryLink = data.link))
                 .catch(this.errorHandler);
         },

@@ -77,7 +77,7 @@ export default {
         Fa, Document, File, EnsoUploader,
     },
 
-    inject: ['errorHandler', 'i18n', 'route', 'canAccess'],
+    inject: ['errorHandler', 'i18n', 'http', 'route', 'canAccess'],
 
     props: {
         id: {
@@ -159,7 +159,7 @@ export default {
         fetch() {
             this.loading = true;
 
-            axios.get(this.route('core.documents.index'), {
+            this.http.get(this.route('core.documents.index'), {
                 params: this.params,
             }).then(({ data }) => {
                 this.documents = data;
@@ -170,7 +170,7 @@ export default {
         destroy(index) {
             this.loading = true;
 
-            axios.delete(this.route(
+            this.http.delete(this.route(
                 'core.documents.destroy',
                 this.documents[index].id, false,
             )).then(() => {
