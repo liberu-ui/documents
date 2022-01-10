@@ -50,7 +50,9 @@
             :class="{'columns is-mobile is-multiline': !compact}">
             <div v-for="(doc, index) in documents"
                 :key="doc.id"
-                :class="{ 'column is-half-touch is-half-desktop is-one-third-widescreen': !compact }">
+                :class="{
+                    'column is-half-touch is-half-desktop is-one-third-widescreen': !compact
+                }">
                 <component :is="component"
                     :file="doc.file"
                     @delete="destroy(index)"/>
