@@ -1,6 +1,6 @@
 {
   "name": "@enso-ui/documents",
-  "version": "3.0.10",
+  "version": "3.0.11",
   "description": "Documents",
   "main": "index.js",
   "scripts": {
