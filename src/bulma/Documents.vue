@@ -50,7 +50,9 @@
             :class="{'columns is-mobile is-multiline': !compact}">
             <div v-for="(doc, index) in documents"
                 :key="doc.id"
-                :class="{ 'column is-half-touch is-half-desktop is-one-third-widescreen': !compact }">
+                :class="{
+                    'column is-half-touch is-half-desktop is-one-third-widescreen': !compact
+                }">
                 <component :is="component"
                     :file="doc.file"
                     @delete="destroy(index)"/>
@@ -60,6 +62,7 @@
 </template>
 
 <script>
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { EnsoUploader } from '@enso-ui/uploader/bulma';
@@ -72,9 +75,11 @@ library.add(faPlus, faSync, faSearch);
 export default {
     name: 'Documents',
 
-    components: { Document, File, EnsoUploader },
+    components: {
+        Fa, Document, File, EnsoUploader,
+    },
 
-    inject: ['errorHandler', 'i18n', 'route', 'canAccess'],
+    inject: ['errorHandler', 'i18n', 'http', 'route', 'canAccess'],
 
     props: {
         id: {
@@ -106,6 +111,8 @@ export default {
             type: Number,
         },
     },
+
+    emits: ['update'],
 
     data: () => ({
         documents: [],
@@ -154,7 +161,7 @@ export default {
         fetch() {
             this.loading = true;
 
-            axios.get(this.route('core.documents.index'), {
+            this.http.get(this.route('core.documents.index'), {
                 params: this.params,
             }).then(({ data }) => {
                 this.documents = data;
@@ -165,7 +172,7 @@ export default {
         destroy(index) {
             this.loading = true;
 
-            axios.delete(this.route(
+            this.http.delete(this.route(
                 'core.documents.destroy',
                 this.documents[index].id, false,
             )).then(() => {

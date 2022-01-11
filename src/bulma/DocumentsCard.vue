@@ -2,13 +2,13 @@
     <card collapsible
         :collapsed="collapsed">
         <card-header class="has-background-light">
-            <template v-slot:title>
+            <template #title>
                 <span class="icon is-small mr-1">
                     <fa :icon="icon"/>
                 </span>
                 {{ displayTitle }}
             </template>
-            <template v-slot:controls>
+            <template #controls>
                 <card-refresh @refresh="fetch"/>
                 <card-badge :label="count"/>
                 <card-collapse/>
@@ -20,7 +20,6 @@
                 :type="type"
                 :query="query"
                 @update="count = $refs.documents.count; $refs.card.resize()"
-                v-on="$listeners"
                 ref="documents"/>
         </card-content>
     </card>
@@ -28,6 +27,7 @@
 
 <script>
 import { mapState } from 'vuex';
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCopy, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import {
@@ -41,7 +41,14 @@ export default {
     name: 'DocumentsCard',
 
     components: {
-        Card, CardHeader, CardRefresh, CardCollapse, CardBadge, CardContent, Documents,
+        Fa,
+        Card,
+        CardHeader,
+        CardRefresh,
+        CardCollapse,
+        CardBadge,
+        CardContent,
+        Documents,
     },
 
     inject: ['i18n', 'route'],

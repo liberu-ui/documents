@@ -46,13 +46,13 @@
                                 </span>
                             </a>
                         </confirmation>
-                        <v-popover trigger="hover"
+                        <dropdown :triggers="['hover']"
                             placement="top">
                             <span class="icon is-small is-naked ml-2">
                                 <fa icon="info-circle"
                                     size="sm"/>
                             </span>
-                            <template v-slot:popover>
+                            <template #popper>
                                 <div class="info">
                                     <p>
                                         <span class="icon is-small">
@@ -74,7 +74,7 @@
                                     </p>
                                 </div>
                             </template>
-                        </v-popover>
+                        </dropdown>
                     </div>
                 </fade>
                 <url :show="temporaryLink !== ''"
@@ -86,7 +86,8 @@
 </template>
 
 <script>
-import { VTooltip, VPopover } from 'v-tooltip';
+import { Dropdown } from 'v-tooltip';
+import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
     faEye, faCloudDownloadAlt, faTrashAlt, faLink,
@@ -96,7 +97,7 @@ import Confirmation from '@enso-ui/confirmation/bulma';
 import formatDistance from '@enso-ui/ui/src/modules/plugins/date-fns/formatDistance';
 import Url from '@enso-ui/files/src/bulma/pages/files/components/Url.vue';
 import { Fade } from '@enso-ui/transitions';
-import { files, numberFormat } from '@enso-ui/mixins';
+import { EnsoFile, numberFormat } from '@enso-ui/mixins';
 
 library.add(
     faEye, faCloudDownloadAlt, faTrashAlt, faLink,
@@ -106,15 +107,11 @@ library.add(
 export default {
     name: 'Document',
 
-    directives: { tooltip: VTooltip },
-
     components: {
-        VPopover, Confirmation, Url, Fade,
+        Fa, Dropdown, Confirmation, Url, Fade,
     },
 
-    mixins: [files],
-
-    inject: ['canAccess', 'errorHandler', 'route'],
+    inject: ['canAccess', 'errorHandler', 'http', 'route'],
 
     props: {
         file: {
@@ -123,11 +120,18 @@ export default {
         },
     },
 
+    emits: ['delete'],
+
     data: () => ({
         temporaryLink: '',
     }),
 
     computed: {
+        icon() {
+            const file = new EnsoFile(this.file.name);
+
+            return file.icon();
+        },
         downloadLink() {
             return this.route('core.files.download', this.file.id);
         },
@@ -141,7 +145,7 @@ export default {
 
     methods: {
         link() {
-            axios.get(this.route('core.files.link', this.file.id))
+            this.http.get(this.route('core.files.link', this.file.id))
                 .then(({ data }) => (this.temporaryLink = data.link))
                 .catch(this.errorHandler);
         },
