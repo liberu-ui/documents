@@ -46,18 +46,11 @@
                 </p>
             </div>
         </slot>
-        <div class="mt-3"
-            :class="{'columns is-mobile is-multiline': !compact}">
-            <div v-for="(doc, index) in documents"
-                :key="doc.id"
-                :class="{
-                    'column is-half-touch is-half-desktop is-one-third-widescreen': !compact
-                }">
-                <component :is="component"
-                    :file="doc.file"
-                    @delete="destroy(index)"/>
-            </div>
-        </div>
+        <file class="mx-a"
+            v-for="(document, index) in documents"
+            :key="document.id"
+            :file="document.file"
+            @delete="destroy(index)"/>
     </div>
 </template>
 
@@ -76,7 +69,7 @@ export default {
     name: 'Documents',
 
     components: {
-        Fa, Document, File, EnsoUploader,
+        Fa, File, EnsoUploader,
     },
 
     inject: ['errorHandler', 'i18n', 'http', 'route', 'canAccess'],
@@ -135,11 +128,6 @@ export default {
             return this.canAccess('core.documents.store')
                 ? this.route('core.documents.store')
                 : null;
-        },
-        component() {
-            return this.compact
-                ? 'document'
-                : 'file';
         },
     },
 
