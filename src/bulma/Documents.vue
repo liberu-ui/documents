@@ -61,7 +61,6 @@ import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { EnsoUploader } from '@enso-ui/uploader/bulma';
 import File from '@enso-ui/files/src/bulma/pages/files/components/File.vue';
 import debounce from 'lodash/debounce';
-import Document from './Document.vue';
 
 library.add(faPlus, faSync, faSearch);
 
