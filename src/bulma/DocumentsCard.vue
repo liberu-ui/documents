@@ -32,7 +32,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCopy, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import {
     Card, CardHeader, CardRefresh, CardCollapse, CardBadge, CardContent,
-} from '@enso-ui/card/bulma';
+} from '@liberu-ui/card/bulma';
 import Documents from './Documents.vue';
 
 library.add(faCopy, faPlusSquare);

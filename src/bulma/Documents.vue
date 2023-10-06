@@ -58,8 +58,8 @@
 import { FontAwesomeIcon as Fa } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlus, faSync, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { EnsoUploader } from '@enso-ui/uploader/bulma';
-import File from '@enso-ui/files/src/bulma/pages/files/components/File.vue';
+import { EnsoUploader } from '@liberu-ui/uploader/bulma';
+import File from '@liberu-ui/files/src/bulma/pages/files/components/File.vue';
 import debounce from 'lodash/debounce';
 
 library.add(faPlus, faSync, faSearch);
