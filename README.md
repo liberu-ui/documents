@@ -1,10 +1,10 @@
 # Documents
 
-![npm license](https://img.shields.io/npm/l/@enso-ui/documents.svg) 
-![npm download](https://img.shields.io/npm/dm/@enso-ui/documents.svg) 
-![GitHub top language](https://img.shields.io/github/languages/top/enso-ui/documents.svg) 
-![GitHub issues](https://img.shields.io/github/issues/enso-ui/documents.svg) 
-![npm version](https://img.shields.io/npm/v/@enso-ui/documents.svg) 
+![npm license](https://img.shields.io/npm/l/@liberu-ui/documents.svg) 
+![npm download](https://img.shields.io/npm/dm/@liberu-ui/documents.svg) 
+![GitHub top language](https://img.shields.io/github/languages/top/liberu-ui/documents.svg) 
+![GitHub issues](https://img.shields.io/github/issues/liberu-ui/documents.svg) 
+![npm version](https://img.shields.io/npm/v/@liberu-ui/documents.svg) 
 
 Documents
 
