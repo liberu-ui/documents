@@ -1,6 +1,6 @@
 {
   "name": "@liberu-ui/documents",
-  "version": "4.0.7",
+  "version": "4.0.8",
   "description": "Documents",
   "main": "index.ts",
   "scripts": {
